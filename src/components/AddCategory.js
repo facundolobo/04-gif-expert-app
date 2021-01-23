@@ -36,6 +36,6 @@ export const AddCategory = ({setCategories}) => {
     )
 }
 
-AddCategory.prototype= {
+AddCategory.PropTypes = {
     setCategories: PropTypes.func.isRequired
 }
