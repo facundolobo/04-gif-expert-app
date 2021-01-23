@@ -33,12 +33,34 @@ describe('Pruebas en <AddCategory/>', () => {
         expect( wrapper.find('p').text().trim() ).toBe(value)
 
     })
+
     test('No debe de postear la informacion con submit ', () => {
     
         wrapper.find('form').simulate('submit',{ preventDefault(){} }); //necesita preventDefault "e" en  handleSubmit =(e)
     
         expect(setCategories).not.toHaveBeenCalled(); //para saber si fue llamad una funcion
 
+    })
+
+    test('debe de llamar setCategory y limpiar la caja de texto', () => {
+        
+        const value = 'Hola mundo';
+        
+        // 1. simular el inputChange
+        wrapper.find('input').simulate('change',{target: {value:value}})
+        
+        // 2. simular el submit
+        wrapper.find('form').simulate('submit',{ preventDefault(){} })
+
+        // 3. setCategories se debe de haber llamado
+        expect(setCategories).toHaveBeenCalled();
+        
+        expect(setCategories).toHaveBeenCalledTimes(1); //Para saber cuantas veces fue llamado (1 vez )
+        
+        expect(setCategories).toHaveBeenCalledWith( expect.any( Function ) ); // para evaluar si llama una funcion 
+
+        // 4. el vlaor del input debe estar '' vacio
+        expect( wrapper.find('input').prop('value') ).toBe('')
     })
     
     
