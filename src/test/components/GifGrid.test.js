@@ -1,4 +1,5 @@
 import React from 'react';
+import '@testing-library/jest-dom'; //ayuda en el autocompletado 
 import { shallow } from "enzyme"; 
 import { GifGrid } from "../../components/GifGrid"; 
 import { useFetchGifs } from '../../hooks/useFetchGifs';
@@ -25,6 +26,10 @@ describe('Pruebas en <GifGrid/>', () => {
     test('debe de mostrar items cuandos e cargan imágenes useFetchGifs', () => {
         
         const gifs = [{  //lo mandamos en data 
+            id: '123',
+            title: 'cualquier cosa',
+            url: 'http://localhost.cualquiercosa.jpg'
+        },{  //lo mandamos en data 
             id: 'ABC',
             title: 'cualquier cosa',
             url: 'http://localhost.cualquiercosa.jpg'
@@ -35,9 +40,13 @@ describe('Pruebas en <GifGrid/>', () => {
             loading: false  //osea ya tengo la información
         });
         
-        const wrapper= shallow(<GifGrid category={category}/>)
-        expect(wrapper).toMatchSnapshot();
+        const wrapper= shallow(<GifGrid category={category}/>) //conexión con el componente
+        
+        // expect(wrapper).toMatchSnapshot();
 
+        expect( wrapper.find('p'). exists() ).toBe( false ) //comprueba si existe el parrafo , lo q significa q loading esta en false 
+    
+        expect(wrapper.find('GifGridItem').length).toBe(gifs.length)
     })
     
     
