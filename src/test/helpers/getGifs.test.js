@@ -1,5 +1,5 @@
 
-import { getGifs } from "../../../helpers/getGifs"
+import { getGifs } from "../../helpers/getGifs"
 
 describe('Pruebas con getGifs', () => {
     

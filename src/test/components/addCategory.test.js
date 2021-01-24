@@ -8,7 +8,7 @@ describe('Pruebas en <AddCategory/>', () => {
     //const setCategories = () => {}; // solo una funcion para enviar, no hace nada
     const setCategories = jest.fn(); //nueva funcion 
     
-    let wrapper = shallow(<AddCategory setCategories={setCategories}/>);; // solo la declaramos para obtener la ayuda "find()"
+    let wrapper = shallow(<AddCategory setCategories={ setCategories}/>) // solo la declaramos para obtener la ayuda "find()"
     
     beforeEach(()=>{ //para cilco de vida 
         
