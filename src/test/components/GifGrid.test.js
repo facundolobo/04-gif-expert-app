@@ -46,7 +46,7 @@ describe('Pruebas en <GifGrid/>', () => {
 
         expect( wrapper.find('p'). exists() ).toBe( false ) //comprueba si existe el parrafo , lo q significa q loading esta en false 
     
-        expect(wrapper.find('GifGridItem').length).toBe(gifs.length)
+        expect(wrapper.find('GifGridItem').length).toBe(gifs.length) //comprueba "GifGridItem" tiene la misma cantidad de elementos que los q enviamos en "gifs"
     })
     
     
